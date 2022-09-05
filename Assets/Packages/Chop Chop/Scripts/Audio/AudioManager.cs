@@ -43,13 +43,18 @@ public class AudioManager : MonoBehaviour
 
 	private void OnEnable()
 	{
+		// SFX Request Event Channel
 		_SFXEventChannel.OnAudioCuePlayRequested += PlayAudioCue;
 		_SFXEventChannel.OnAudioCueStopRequested += StopAudioCue;
 		_SFXEventChannel.OnAudioCueFinishRequested += FinishAudioCue;
 
+		// Music Request Event Channel
+		// NOTE: The reason there needs to be a separate event channel for music is because there's a dedicated sound emitter for music
+		// that must fade between the current music and the requested music, unlike the SFX
 		_musicEventChannel.OnAudioCuePlayRequested += PlayMusicTrack;
 		_musicEventChannel.OnAudioCueStopRequested += StopMusic;
 
+		// Volume Event Channels
 		_masterVolumeEventChannel.OnEventRaised += ChangeMasterVolume;
 		_musicVolumeEventChannel.OnEventRaised += ChangeMusicVolume;
 		_SFXVolumeEventChannel.OnEventRaised += ChangeSFXVolume;
@@ -60,9 +65,10 @@ public class AudioManager : MonoBehaviour
 	{
 		_SFXEventChannel.OnAudioCuePlayRequested -= PlayAudioCue;
 		_SFXEventChannel.OnAudioCueStopRequested -= StopAudioCue;
-
 		_SFXEventChannel.OnAudioCueFinishRequested -= FinishAudioCue;
+
 		_musicEventChannel.OnAudioCuePlayRequested -= PlayMusicTrack;
+		_musicEventChannel.OnAudioCueStopRequested -= StopMusic;
 
 		_musicVolumeEventChannel.OnEventRaised -= ChangeMusicVolume;
 		_SFXVolumeEventChannel.OnEventRaised -= ChangeSFXVolume;
