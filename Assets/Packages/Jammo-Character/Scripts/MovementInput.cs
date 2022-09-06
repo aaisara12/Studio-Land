@@ -112,6 +112,10 @@ public class MovementInput : MonoBehaviour {
 		//Calculate the Input Magnitude
 		Speed = new Vector2(InputX, InputZ).sqrMagnitude;
 
+		// Prevent weird blends where player appears idle but is still partially walking in the blend tree by just a fraction
+		if(Speed < 0.01f)
+			Speed = 0;
+
         //Physically move player
 
 		if (Speed > allowPlayerRotation) {
