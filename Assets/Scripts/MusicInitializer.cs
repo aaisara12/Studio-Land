@@ -3,26 +3,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MusicInitializer : MonoBehaviour
+namespace StudioLand
 {
-    [SerializeField] AudioCueSO music;
-    [SerializeField] AudioConfigurationSO musicConfigurationSO;
-
-    [Header("Listens on")]
-    [SerializeField] VoidEventChannelSO sceneReadyChannelSO;
-
-    [Header("Broadcasts on")]
-    [SerializeField] AudioCueEventChannelSO musicEventChannelSO;
-
-
-
-    void Awake()
+    public class MusicInitializer : MonoBehaviour
     {
-        sceneReadyChannelSO.OnEventRaised += HandleSceneReadied;
-    }
+        [SerializeField] AudioCueSO music;
+        [SerializeField] AudioConfigurationSO musicConfigurationSO;
 
-    void HandleSceneReadied()
-    {
-        musicEventChannelSO.RaisePlayEvent(music, musicConfigurationSO);
+        [Header("Listens on")]
+        [SerializeField] VoidEventChannelSO sceneReadyChannelSO;
+
+        [Header("Broadcasts on")]
+        [SerializeField] AudioCueEventChannelSO musicEventChannelSO;
+
+
+
+        void Awake()
+        {
+            sceneReadyChannelSO.OnEventRaised += HandleSceneReadied;
+        }
+
+        void HandleSceneReadied()
+        {
+            musicEventChannelSO.RaisePlayEvent(music, musicConfigurationSO);
+        }
     }
 }
+

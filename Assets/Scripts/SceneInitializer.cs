@@ -4,37 +4,41 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.AddressableAssets;
 
-public class SceneInitializer : MonoBehaviour
+namespace StudioLand
 {
-    [SerializeField] AssetReference persistentManagersScene = default;
-    [SerializeField] VoidEventChannelSO OnSceneReadyEventChannelSO = default;
-    bool isColdStart = false;
-
-    void Awake()
+    public class SceneInitializer : MonoBehaviour
     {
-        // We consider it a "cold start" if the game doesn't have it's managers up and running when this scene
-        // loads, which happens if we directly play this scene instead of getting to this scene from a different one.
-        if(!SceneManager.GetSceneByName(persistentManagersScene.editorAsset.name).isLoaded)
+        [SerializeField] AssetReference persistentManagersScene = default;
+        [SerializeField] VoidEventChannelSO OnSceneReadyEventChannelSO = default;
+        bool isColdStart = false;
+
+        void Awake()
         {
-            persistentManagersScene.LoadSceneAsync(LoadSceneMode.Additive, true);
-            isColdStart = true;
+            // We consider it a "cold start" if the game doesn't have it's managers up and running when this scene
+            // loads, which happens if we directly play this scene instead of getting to this scene from a different one.
+            if(!SceneManager.GetSceneByName(persistentManagersScene.editorAsset.name).isLoaded)
+            {
+                persistentManagersScene.LoadSceneAsync(LoadSceneMode.Additive, true);
+                isColdStart = true;
+            }
         }
-    }
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        // We want to raise the event after all the listeners in the scene have had the chance to subscribe 
-        if(isColdStart)
+        // Start is called before the first frame update
+        void Start()
         {
-            OnSceneReadyEventChannelSO.RaiseEvent();
+            // We want to raise the event after all the listeners in the scene have had the chance to subscribe 
+            if(isColdStart)
+            {
+                OnSceneReadyEventChannelSO.RaiseEvent();
+            }
         }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // Update is called once per frame
+        void Update()
+        {
+            
+        }
     }
 }
+
