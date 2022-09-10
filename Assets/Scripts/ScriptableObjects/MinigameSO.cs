@@ -1,23 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace StudioLand
 {
     [CreateAssetMenu( fileName = "New MinigameSO", menuName = "ScriptableObjects/Minigame")]
     public class MinigameSO : ScriptableObject
     {
-        // Start is called before the first frame update
-        void Start()
-        {
-            
-        }
+        public string title = default;
+        public int highestScore = 0;
+        public AssetReference scene = default;
 
-        // Update is called once per frame
-        void Update()
-        {
-            
-        }
+        [TextArea(3, 10)]
+        public string instructions = default;
+
+        public Sprite picture = default;
     }
 }
 
