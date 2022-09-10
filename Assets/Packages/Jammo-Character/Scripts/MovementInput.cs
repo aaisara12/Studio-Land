@@ -7,7 +7,7 @@ using UnityEngine;
 //With a blend tree to control the inputmagnitude and allow blending between animations.
 [RequireComponent(typeof(CharacterController))]
 public class MovementInput : MonoBehaviour {
-
+	[SerializeField] StudioLand.InputReaderSO inputReader;
     public float Velocity;
     [Space]
 
@@ -36,6 +36,16 @@ public class MovementInput : MonoBehaviour {
     public float verticalVel;
     private Vector3 moveVector;
 
+	void Awake()
+	{
+		inputReader.MoveEvent += HandleNewMoveInput;
+	}
+	void HandleNewMoveInput(Vector2 movement)
+	{
+		InputX = movement.x;
+		InputZ = movement.y;
+	}
+
 	// Use this for initialization
 	void Start () {
 		anim = this.GetComponent<Animator> ();
@@ -63,8 +73,6 @@ public class MovementInput : MonoBehaviour {
     }
 
     void PlayerMoveAndRotation() {
-		InputX = Input.GetAxis ("Horizontal");
-		InputZ = Input.GetAxis ("Vertical");
 
 		var camera = Camera.main;
 		var forward = cam.transform.forward;
@@ -102,12 +110,6 @@ public class MovementInput : MonoBehaviour {
     }
 
 	void InputMagnitude() {
-		//Calculate Input Vectors
-		InputX = Input.GetAxis ("Horizontal");
-		InputZ = Input.GetAxis ("Vertical");
-
-		//anim.SetFloat ("InputZ", InputZ, VerticalAnimTime, Time.deltaTime * 2f);
-		//anim.SetFloat ("InputX", InputX, HorizontalAnimSmoothTime, Time.deltaTime * 2f);
 
 		//Calculate the Input Magnitude
 		Speed = new Vector2(InputX, InputZ).sqrMagnitude;
