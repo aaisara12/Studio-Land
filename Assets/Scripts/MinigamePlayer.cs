@@ -1,18 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 namespace StudioLand
 {
     /// <summary>
-    /// Simple component for 
+    /// Simple component for notifying the game that a player wants to play a minigame
+    /// </summary>
     public class MinigamePlayer : MonoBehaviour
     {
         [SerializeField] MinigameSO minigame;
         [SerializeField] MinigameEventChannelSO minigameEventChannelSO;
-        public bool isValid
+        [SerializeField] UnityEvent<MinigameSO> OnValidate = new UnityEvent<MinigameSO>();
+        bool isValid
         {
-            get => minigame != null && minigame.scene != null;
+            get => minigame != null && minigame.scene.editorAsset != null;
+        }
+
+        void Start()
+        {
+            if(isValid)
+                OnValidate?.Invoke(minigame);
         }
 
         public void PlayMinigame()
