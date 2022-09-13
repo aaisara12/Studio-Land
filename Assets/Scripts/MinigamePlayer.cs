@@ -11,6 +11,9 @@ namespace StudioLand
     /// </summary>
     public class MinigamePlayer : MonoBehaviour
     {
+        // Note: Even though this behaviour doesn't really NEED to be a monobehaviour (since it's mostly functional),
+        // having it exist in the scene as a component is easier to understand than a ScriptableObject asset, which
+        // needs to be managed outside of the scene.
         [SerializeField] MinigameSO minigame;
         [SerializeField] MinigameEventChannelSO minigameEventChannelSO;
         [SerializeField] UnityEvent<MinigameSO> OnValidate = new UnityEvent<MinigameSO>();
