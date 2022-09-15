@@ -13,6 +13,7 @@ namespace StudioLand
         // Callbacks
         public event System.Action<Vector2> MoveEvent = delegate {};
         public event System.Action<Vector2> RotateCameraEvent = delegate {};
+        public event System.Action InteractEvent = delegate {};
 
 
         public void OnMove(InputAction.CallbackContext context)
@@ -23,6 +24,11 @@ namespace StudioLand
         public void OnRotateCamera(InputAction.CallbackContext context)
         {
             RotateCameraEvent?.Invoke(context.ReadValue<Vector2>());
+        }
+
+        public void OnInteract(InputAction.CallbackContext context)
+        {
+            InteractEvent?.Invoke();
         }
 
 
