@@ -9,7 +9,14 @@ namespace StudioLand
     {
         [SerializeField] TMPro.TMP_Text text;
         [SerializeField] float cycleTime = 0.5f;
+        [SerializeField] bool playOnAwake = false;
+
         void Awake()
+        {
+            if(playOnAwake)
+                StartAnimation();
+        }
+        public void StartAnimation()
         {
             text.DOFade(0, cycleTime * 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
         }

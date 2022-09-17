@@ -1400,6 +1400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 694813869}
   cycleTime: 1.5
+  playOnAwake: 0
 --- !u!114 &694813869 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 254718891485055910, guid: 295654329e1286d4c857d6f903498c65, type: 3}
@@ -1774,7 +1775,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1011459860}
-  m_LocalRotation: {x: 0.044788815, y: 0.33679566, z: -0.016041132, w: 0.9403751}
+  m_LocalRotation: {x: 0.0447888, y: 0.3367957, z: -0.016041126, w: 0.9403751}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3299,6 +3300,34 @@ PrefabInstance:
       propertyPath: minigameEventChannelSO
       value: 
       objectReference: {fileID: 11400000, guid: 96d4d4d5039e9c342970815ec411f9eb, type: 2}
+    - target: {fileID: 2955418068881180209, guid: 295654329e1286d4c857d6f903498c65, type: 3}
+      propertyPath: OnValidate.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2955418068881180209, guid: 295654329e1286d4c857d6f903498c65, type: 3}
+      propertyPath: OnValidate.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2955418068881180209, guid: 295654329e1286d4c857d6f903498c65, type: 3}
+      propertyPath: OnValidate.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 595311717}
+    - target: {fileID: 2955418068881180209, guid: 295654329e1286d4c857d6f903498c65, type: 3}
+      propertyPath: OnValidate.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2955418068881180209, guid: 295654329e1286d4c857d6f903498c65, type: 3}
+      propertyPath: OnValidate.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: StartAnimation
+      objectReference: {fileID: 0}
+    - target: {fileID: 2955418068881180209, guid: 295654329e1286d4c857d6f903498c65, type: 3}
+      propertyPath: OnValidate.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: StudioLand.FadeInOutTween, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2955418068881180209, guid: 295654329e1286d4c857d6f903498c65, type: 3}
+      propertyPath: OnValidate.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 295654329e1286d4c857d6f903498c65, type: 3}
 --- !u!1001 &7501219877907218477
