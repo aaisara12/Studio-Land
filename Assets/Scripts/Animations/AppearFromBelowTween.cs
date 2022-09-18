@@ -12,11 +12,17 @@ namespace StudioLand
         [SerializeField] UIDocument document;
         [SerializeField] float duration = 1;
         [SerializeField] bool playOnAwake = false;
+        [SerializeField] bool hideOnAwake = true;
         VisualElement root;
 
         void Awake()
         {
             root = document.rootVisualElement;
+
+            if(hideOnAwake)
+            {
+                root.style.opacity = 0;
+            }
             if(playOnAwake)
                 StartAnimation();
         }
@@ -26,7 +32,7 @@ namespace StudioLand
             // TODO: Animate the position of the document by adding it to the old and new style values struct
             StyleValues oldValues;
             oldValues.opacity = 0;
-            oldValues.top = 500;
+            oldValues.top = 200;
 
             StyleValues newValues;
             newValues.opacity = 1;

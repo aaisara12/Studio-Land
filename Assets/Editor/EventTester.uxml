@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="EventTester.uss" />
+    <ui:VisualElement style="width: 100%; height: 100%;">
+        <uie:ObjectField label="Minigame Event Channel" type="StudioLand.MinigameEventChannelSO, Assembly-CSharp" name="Channel" />
+        <uie:ObjectField label="Minigame" name="Data" type="StudioLand.MinigameSO, Assembly-CSharp" />
+        <ui:Button text="Broadcast!" display-tooltip-when-elided="true" name="Broadcast" />
+    </ui:VisualElement>
+</ui:UXML>

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UIElements;
 
 namespace StudioLand
@@ -10,6 +11,7 @@ namespace StudioLand
     {
         [SerializeField] UIDocument document;
         [SerializeField] MinigameEventChannelSO minigameEventChannel;
+        [SerializeField] UnityEvent entranceAnimation;
         
         VisualElement root;
 
@@ -31,6 +33,7 @@ namespace StudioLand
         void HandleNewMinigame(MinigameSO minigame)
         {
             root.Q<Label>("Title").text = minigame.title;
+            entranceAnimation?.Invoke();
         }
     }
 }
