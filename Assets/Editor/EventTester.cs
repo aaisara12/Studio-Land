@@ -1,18 +1,36 @@
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEditor.UIElements;
 using StudioLand;
 
 
 public class EventTester : EditorWindow
 {
-    BaseField<Object> channelField;
-    BaseField<Object> dataField;
+    
+    // Event Channel Fields
+    BaseField<Object> voidChannelField;
+    BaseField<Object> floatChannelField;
+    BaseField<Object> minigameChannelField;
 
-    MinigameEventChannelSO minigameChannel;
-    MinigameSO minigame;
+    // Data Fields
+    BaseField<float> floatDataField;
+    BaseField<Object> minigameDataField;
+
+    // Event Channels
+    VoidEventChannelSO voidEventChannel;
+    FloatEventChannelSO floatEventChannel;
+    MinigameEventChannelSO minigameEventChannel;
+
+    // Data
+    float floatData;
+    MinigameSO minigameData;
+
 
     Button broadcastButton;
+    VisualElement voidSection;
+    VisualElement floatSection;
+    VisualElement minigameSection;
 
     [MenuItem("Window/Event Tester")]
     public static void ShowExample()
@@ -35,30 +53,80 @@ public class EventTester : EditorWindow
         root.styleSheets.Add(styleSheet);
 
 
-        channelField = root.Q<BaseField<Object>>("Channel");
-        channelField.RegisterValueChangedCallback(HandleNewMinigameEventChannel);
+        // Event Channel set up
+        voidChannelField = root.Q<BaseField<Object>>("VoidChannel");
+        floatChannelField = root.Q<BaseField<Object>>("FloatChannel");
+        minigameChannelField = root.Q<BaseField<Object>>("MinigameChannel");
 
-        dataField = root.Q<BaseField<Object>>("Data");
-        dataField.RegisterValueChangedCallback(HandleNewMinigameData);
+        voidChannelField.RegisterValueChangedCallback(HandleNewVoidEventChannel);
+        floatChannelField.RegisterValueChangedCallback(HandleNewFloatEventChannel);
+        minigameChannelField.RegisterValueChangedCallback(HandleNewMinigameEventChannel);
 
+        // Data set up
+        floatDataField = root.Q<BaseField<float>>("FloatData");
+        minigameDataField = root.Q<BaseField<Object>>("MinigameData");
+
+        floatDataField.RegisterValueChangedCallback(HandleNewFloatData);
+        minigameDataField.RegisterValueChangedCallback(HandleNewMinigameData);
+
+        // Section set up
+        voidSection = root.Q("Void");
+        floatSection = root.Q("Float");
+        minigameSection = root.Q("Minigame");
+
+        // Input set up
         broadcastButton = root.Q<Button>("Broadcast");
         broadcastButton.RegisterCallback<ClickEvent>(HandleBroadcastPressed);
 
+        root.Q<EnumField>("ChannelType").RegisterValueChangedCallback(HandleNewChannelType);
+
+        // TODO: Show proper fields based on enum choice
     }
 
-    private void HandleBroadcastPressed(ClickEvent evt)
+    private void HandleNewChannelType(ChangeEvent<System.Enum> evt)
     {
-        if(minigameChannel && minigame)
+        switch((EventChannelType)evt.newValue)
         {
-            minigameChannel.RaiseEvent(minigame);
+            case EventChannelType.Void:
+                voidSection.style.display = DisplayStyle.Flex;
+                floatSection.style.display = DisplayStyle.None;
+                minigameSection.style.display = DisplayStyle.None;
+                break;
+            case EventChannelType.Float:
+                voidSection.style.display = DisplayStyle.None;
+                floatSection.style.display = DisplayStyle.Flex;
+                minigameSection.style.display = DisplayStyle.None;
+                break;
+            case EventChannelType.Minigame:
+                voidSection.style.display = DisplayStyle.None;
+                floatSection.style.display = DisplayStyle.None;
+                minigameSection.style.display = DisplayStyle.Flex;
+                break;
         }
     }
 
-    void OnDisable()
+    private void HandleNewFloatData(ChangeEvent<float> evt)
     {
-        channelField.UnregisterValueChangedCallback(HandleNewMinigameEventChannel);
-        dataField.UnregisterValueChangedCallback(HandleNewMinigameData);
+        floatData = evt.newValue;
+    }
 
+    private void HandleNewVoidEventChannel(ChangeEvent<Object> evt)
+    {
+        voidEventChannel?.RaiseEvent();
+    }
+    private void HandleNewFloatEventChannel(ChangeEvent<Object> evt)
+    {
+        floatEventChannel?.RaiseEvent(floatData);
+    }
+
+    
+
+    private void HandleBroadcastPressed(ClickEvent evt)
+    {
+        if(minigameEventChannel && minigameData)
+        {
+            minigameEventChannel.RaiseEvent(minigameData);
+        }
     }
 
     private void HandleNewMinigameEventChannel(ChangeEvent<Object> evt)
@@ -66,7 +134,7 @@ public class EventTester : EditorWindow
         if(evt.newValue != null)
         {
             Debug.Log("Found channel called " + evt.newValue.name);
-            minigameChannel = evt.newValue as MinigameEventChannelSO;
+            minigameEventChannel = evt.newValue as MinigameEventChannelSO;
         }
         
     }
@@ -76,7 +144,7 @@ public class EventTester : EditorWindow
         if(evt.newValue != null)
         {
             Debug.Log("Found minigame data called " + evt.newValue.name);
-            minigame = evt.newValue as MinigameSO;
+            minigameData = evt.newValue as MinigameSO;
         }
         
     }
