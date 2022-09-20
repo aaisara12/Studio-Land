@@ -35,12 +35,20 @@ namespace StudioLand
             root.Q<Label>("Title").text = minigame.title;
             entranceAnimation?.Invoke();
 
-            root.Q<Button>("Play").RegisterCallback<ClickEvent>(ev => PlayMinigame());
+            root.Q<Label>("Description").text = minigame.instructions;
+
+            StyleBackground pic = new StyleBackground();
+            pic.value = Background.FromSprite(minigame.picture);
+
+            root.Q("Picture").style.backgroundImage = pic;
+
+            root.Q<Button>("Play").RegisterCallback<ClickEvent>(ev => PlayMinigame(minigame));
         }
 
-        private void PlayMinigame()
+        private void PlayMinigame(MinigameSO minigame)
         {
-            Debug.Log("ASDFADS");
+            // Replace this with some kind of exposed UnityEvent callback that talks to the scene loader module and other systems
+            minigame.scene.LoadSceneAsync();
         }
     }
 }
