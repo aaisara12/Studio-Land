@@ -450,6 +450,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   document: {fileID: 1552684567}
-  duration: 1
+  duration: 0.3
   playOnAwake: 0
-  hideOnAwake: 1
+  hideOnAwake: 0

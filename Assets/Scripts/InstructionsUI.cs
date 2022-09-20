@@ -34,6 +34,13 @@ namespace StudioLand
         {
             root.Q<Label>("Title").text = minigame.title;
             entranceAnimation?.Invoke();
+
+            root.Q<Button>("Play").RegisterCallback<ClickEvent>(ev => PlayMinigame());
+        }
+
+        private void PlayMinigame()
+        {
+            Debug.Log("ASDFADS");
         }
     }
 }

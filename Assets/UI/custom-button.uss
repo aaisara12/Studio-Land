@@ -1,0 +1,11 @@
+.custombutton {
+    background-color: rgba(255, 38, 0, 255);
+}
+
+.custombutton:hover {
+    background-color: rgb(255, 83, 83);
+}
+
+.custombutton:active {
+    background-color: rgb(192, 0, 0);
+}

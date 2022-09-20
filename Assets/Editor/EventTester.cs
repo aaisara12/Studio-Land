@@ -25,8 +25,11 @@ public class EventTester : EditorWindow
     // Data
     float floatData;
     MinigameSO minigameData;
+    EventChannelType currentChannelType;
 
 
+    // UI Element References
+    VisualElement root;
     Button broadcastButton;
     VisualElement voidSection;
     VisualElement floatSection;
@@ -42,7 +45,7 @@ public class EventTester : EditorWindow
     private void OnEnable()
     {
         // Each editor window contains a root VisualElement object
-        VisualElement root = rootVisualElement;
+        root = rootVisualElement;
 
         // Import UXML -- NOTE: the "visual tree" is the structure of the UI created in UI Builder
         var original = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Editor/EventTester.uxml");
@@ -85,6 +88,7 @@ public class EventTester : EditorWindow
 
     private void HandleNewChannelType(ChangeEvent<System.Enum> evt)
     {
+        currentChannelType = (EventChannelType)evt.newValue;
         switch((EventChannelType)evt.newValue)
         {
             case EventChannelType.Void:
@@ -105,45 +109,67 @@ public class EventTester : EditorWindow
         }
     }
 
-    private void HandleNewFloatData(ChangeEvent<float> evt)
-    {
-        floatData = evt.newValue;
-    }
+    
 
-    private void HandleNewVoidEventChannel(ChangeEvent<Object> evt)
-    {
-        voidEventChannel?.RaiseEvent();
-    }
-    private void HandleNewFloatEventChannel(ChangeEvent<Object> evt)
-    {
-        floatEventChannel?.RaiseEvent(floatData);
-    }
+    
+    
 
     
 
     private void HandleBroadcastPressed(ClickEvent evt)
     {
-        if(minigameEventChannel && minigameData)
+        switch(currentChannelType)
         {
-            minigameEventChannel.RaiseEvent(minigameData);
+            case EventChannelType.Void:
+                if(voidEventChannel)
+                    voidEventChannel.RaiseEvent();
+                break;
+            case EventChannelType.Float:
+                if(floatEventChannel)
+                    floatEventChannel.RaiseEvent(floatData);
+                break;
+            case EventChannelType.Minigame:
+                if(minigameEventChannel && minigameData)
+                    minigameEventChannel.RaiseEvent(minigameData);
+                break;
         }
     }
 
+
+    private void HandleNewVoidEventChannel(ChangeEvent<Object> evt)
+    {
+        if(evt.newValue != null)
+        {
+            voidEventChannel = evt.newValue as VoidEventChannelSO;
+        }
+    }
+
+    private void HandleNewFloatEventChannel(ChangeEvent<Object> evt)
+    {
+        if(evt.newValue != null)
+        {
+            floatEventChannel = evt.newValue as FloatEventChannelSO;
+        }
+    }
     private void HandleNewMinigameEventChannel(ChangeEvent<Object> evt)
     {
         if(evt.newValue != null)
         {
-            Debug.Log("Found channel called " + evt.newValue.name);
             minigameEventChannel = evt.newValue as MinigameEventChannelSO;
-        }
-        
+        } 
+    }
+
+
+
+    private void HandleNewFloatData(ChangeEvent<float> evt)
+    {
+        floatData = evt.newValue;
     }
 
     private void HandleNewMinigameData(ChangeEvent<Object> evt)
     {
         if(evt.newValue != null)
         {
-            Debug.Log("Found minigame data called " + evt.newValue.name);
             minigameData = evt.newValue as MinigameSO;
         }
         
