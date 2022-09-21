@@ -12,6 +12,7 @@ namespace StudioLand
         [SerializeField] UIDocument document;
         [SerializeField] MinigameEventChannelSO minigameEventChannel;
         [SerializeField] UnityEvent entranceAnimation;
+        [SerializeField] LoadEventChannelSO requestLoadSceneChannel;
         
         VisualElement root;
 
@@ -47,8 +48,7 @@ namespace StudioLand
 
         private void PlayMinigame(MinigameSO minigame)
         {
-            // Replace this with some kind of exposed UnityEvent callback that talks to the scene loader module and other systems
-            minigame.scene.LoadSceneAsync();
+            requestLoadSceneChannel.RaiseEvent(minigame.scene);
         }
     }
 }

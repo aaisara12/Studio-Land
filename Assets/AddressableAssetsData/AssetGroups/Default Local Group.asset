@@ -25,6 +25,14 @@ MonoBehaviour:
     m_Address: Assets/Scenes/Minigame - UIElements.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 2f1c37e14e88c0342b1b71ec5f055729
+    m_Address: Assets/Scenes/UI.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cdfff7cf8e259de4db3463c3810a2129
+    m_Address: Assets/Scenes/Main.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 2780b6b57187abe4fae4d0484fc5b5bd, type: 2}
   m_SchemaSet:

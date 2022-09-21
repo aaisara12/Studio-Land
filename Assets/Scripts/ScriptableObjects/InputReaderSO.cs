@@ -50,6 +50,11 @@ namespace StudioLand
         {
             gameInput.Gameplay.Enable();
         }
+
+        public void DisableAllInput()
+        {
+            gameInput.Gameplay.Disable();
+        }
     }
 }
 

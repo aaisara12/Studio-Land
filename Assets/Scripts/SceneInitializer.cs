@@ -8,8 +8,11 @@ namespace StudioLand
 {
     public class SceneInitializer : MonoBehaviour
     {
+        [SerializeField] AssetReference thisScene = default;
+        [SerializeField] AssetReference uiScene = default;
         [SerializeField] AssetReference persistentManagersScene = default;
         [SerializeField] VoidEventChannelSO OnSceneReadyEventChannelSO = default;
+        [SerializeField] LoadEventChannelSO coldStartLoadSceneChannelSO = default;
         bool isColdStart = false;
 
         void Awake()
@@ -19,6 +22,7 @@ namespace StudioLand
             if(!SceneManager.GetSceneByName(persistentManagersScene.editorAsset.name).isLoaded)
             {
                 persistentManagersScene.LoadSceneAsync(LoadSceneMode.Additive, true);
+                uiScene.LoadSceneAsync(LoadSceneMode.Additive, true);
                 isColdStart = true;
             }
         }
@@ -31,6 +35,7 @@ namespace StudioLand
             if(isColdStart)
             {
                 OnSceneReadyEventChannelSO.RaiseEvent();
+                coldStartLoadSceneChannelSO.RaiseEvent(thisScene);
             }
         }
 
