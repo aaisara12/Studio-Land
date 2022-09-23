@@ -11,7 +11,9 @@ namespace StudioLand
         [SerializeField] AssetReference thisScene = default;
         [SerializeField] AssetReference uiScene = default;
         [SerializeField] AssetReference persistentManagersScene = default;
-        [SerializeField] VoidEventChannelSO OnSceneReadyEventChannelSO = default;
+
+        [Header("Broadcasts on")]
+        [SerializeField] VoidEventChannelSO sceneReadyEventChannelSO = default;
         [SerializeField] LoadEventChannelSO coldStartLoadSceneChannelSO = default;
         bool isColdStart = false;
 
@@ -34,7 +36,7 @@ namespace StudioLand
             // We want to raise the event after all the listeners in the scene have had the chance to subscribe 
             if(isColdStart)
             {
-                OnSceneReadyEventChannelSO.RaiseEvent();
+                sceneReadyEventChannelSO.RaiseEvent();
                 coldStartLoadSceneChannelSO.RaiseEvent(thisScene);
             }
         }

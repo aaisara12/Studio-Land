@@ -8,9 +8,11 @@ namespace StudioLand
     public class SpawnManager : MonoBehaviour
     {
         [SerializeField] GameObject playerPrefab;
-        [SerializeField] VoidEventChannelSO sceneReadyEventChannel;
         [SerializeField] TransformAnchor playerTransformAnchor;
         [SerializeField] Transform spawnLocation;
+
+        [Header("Listens on")]
+        [SerializeField] VoidEventChannelSO sceneReadyEventChannel;
 
         void OnEnable()
         {

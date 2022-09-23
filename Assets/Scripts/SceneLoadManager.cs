@@ -16,13 +16,19 @@ namespace StudioLand
     /// </summary>
     public class SceneLoadManager : MonoBehaviour
     {
-        [SerializeField] FloatEventChannelSO fadeInRequestChannel;
-        [SerializeField] FloatEventChannelSO fadeOutRequestChannel;
-        [SerializeField] LoadEventChannelSO requestLoadSceneChannel;
-        [SerializeField] LoadEventChannelSO coldStartLoadSceneChannel;   // Used for the cold start code to tell the load system what scene it started on
         [SerializeField] InputReaderSO inputReader;
         [SerializeField] float fadeDuration = 3;
         AssetReference currentlyLoadedGameScene;
+        
+        [Header("Broadcasts on")]
+        [SerializeField] FloatEventChannelSO fadeInRequestChannel;
+        [SerializeField] FloatEventChannelSO fadeOutRequestChannel;
+        [SerializeField] VoidEventChannelSO sceneReadyEventChannel;
+
+        [Header("Listens on")]
+        [SerializeField] LoadEventChannelSO requestLoadSceneChannel;
+        [SerializeField] LoadEventChannelSO coldStartLoadSceneChannel;   // Used for the cold start code to tell the load system what scene it started on
+        
 
 
         void OnEnable()
@@ -70,6 +76,7 @@ namespace StudioLand
                 inputReader.EnableGameplayInput();
                 fadeInRequestChannel.RaiseEvent(fadeDuration);
                 currentlyLoadedGameScene = requestedScene;
+                sceneReadyEventChannel.RaiseEvent();
             }
             requestedScene.LoadSceneAsync(LoadSceneMode.Additive).Completed += EnableInputAndFadeIn;
         }

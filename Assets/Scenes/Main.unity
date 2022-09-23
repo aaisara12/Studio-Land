@@ -1775,7 +1775,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1011459860}
-  m_LocalRotation: {x: 0.044788815, y: 0.33679566, z: -0.016041132, w: 0.9403751}
+  m_LocalRotation: {x: 0.0447888, y: 0.3367957, z: -0.016041126, w: 0.9403751}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2332,7 +2332,7 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  OnSceneReadyEventChannelSO: {fileID: 11400000, guid: f6622d6f16403f542bd734c0e3f37146, type: 2}
+  sceneReadyEventChannelSO: {fileID: 11400000, guid: f6622d6f16403f542bd734c0e3f37146, type: 2}
   coldStartLoadSceneChannelSO: {fileID: 11400000, guid: d3b2b70c842eda245819cadccf49cfa3, type: 2}
 --- !u!114 &1487652624 stripped
 MonoBehaviour:

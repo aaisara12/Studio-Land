@@ -8,6 +8,8 @@ namespace StudioLand
     public class GameManager : MonoBehaviour
     {
         [SerializeField] InputReaderSO inputReader;
+
+        [Header("Listens on")]
         [SerializeField] VoidEventChannelSO sceneReadyChannelSO;
 
         void OnEnable()

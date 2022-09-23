@@ -488,6 +488,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   requestLoadSceneChannel: {fileID: 11400000, guid: 10507d1dc1375b34487fef0dd415207e, type: 2}
+  sceneReadyEventChannel: {fileID: 11400000, guid: f6622d6f16403f542bd734c0e3f37146, type: 2}
   playerInput: {fileID: 11400000, guid: 8a60c2cec9ca7fa469a37f8e2cf4d3be, type: 2}
 --- !u!114 &1552684571
 MonoBehaviour:
