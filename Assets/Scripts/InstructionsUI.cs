@@ -13,6 +13,7 @@ namespace StudioLand
         [SerializeField] MinigameEventChannelSO minigameEventChannel;
         [SerializeField] UnityEvent entranceAnimation;
         [SerializeField] LoadEventChannelSO requestLoadSceneChannel;
+        [SerializeField] InputReaderSO playerInput;
         
         VisualElement root;
 
@@ -33,6 +34,8 @@ namespace StudioLand
 
         void HandleNewMinigame(MinigameSO minigame)
         {
+            playerInput.EnableUIInput();
+            
             root.Q<Label>("Title").text = minigame.title;
             entranceAnimation?.Invoke();
 
