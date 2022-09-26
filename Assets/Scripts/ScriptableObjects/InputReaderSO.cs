@@ -9,7 +9,6 @@ namespace StudioLand
     public class InputReaderSO : DescriptionBaseSO, GameInput.IGameplayActions
     {
         GameInput gameInput = default;
-        [SerializeField] InputActionAsset uiInput;     // UI Toolkit comes with its own input action asset that we must control
         [SerializeField] InputActionReference cinemachineActionRef;  // Input action asset assigned for cinemachine's input reader
         // Callbacks
         public event System.Action<Vector2> MoveEvent = delegate {};
@@ -52,21 +51,18 @@ namespace StudioLand
         {
             gameInput.Gameplay.Enable();
             cinemachineActionRef.action.Enable();
-            //uiInput.Disable();
         }
 
         public void EnableUIInput()
         {
             gameInput.Gameplay.Disable();
             cinemachineActionRef.action.Disable();
-            //uiInput.Enable();
         }
 
         public void DisableAllInput()
         {
             gameInput.Gameplay.Disable();
             cinemachineActionRef.action.Disable();
-            //uiInput.Disable();
         }
     }
 }
