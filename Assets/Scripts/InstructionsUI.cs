@@ -13,7 +13,7 @@ namespace StudioLand
         [SerializeField] UnityEvent entranceAnimation;
         [SerializeField] UnityEvent closingAnimation;
         [SerializeField] InputReaderSO playerInput;
-
+        [SerializeField] float spamThresholdTime = 0.5f;        // How long must the user wait before opening/closing after recently doing so?
         
 
         [Header("Broadcasts on")]
@@ -47,8 +47,6 @@ namespace StudioLand
         void HandleNewMinigame(MinigameSO minigame)
         {
             playerInput.EnableUIInput();
-
-            //root.Q<VisualElement>("MainPanel").Focus();
             
             entranceAnimation?.Invoke();
             
@@ -67,7 +65,7 @@ namespace StudioLand
             
         }
 
-        void CleanUpPanel()
+        public void CleanUpPanel()
         {
             closingAnimation?.Invoke();
             playerInput.EnableGameplayInput();
@@ -89,8 +87,6 @@ namespace StudioLand
 
         void Initialize()
         {
-            root.Q<VisualElement>("MainPanel").Focus();
-            root.Q<VisualElement>("ExitBackground").RegisterCallback<FocusEvent>(ev => CleanUpPanel());
             root.style.opacity = 0;
             root.style.display = DisplayStyle.None;
         }

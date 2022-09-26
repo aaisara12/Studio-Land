@@ -10,6 +10,8 @@ namespace StudioLand
     {
         GameInput gameInput = default;
         [SerializeField] InputActionReference cinemachineActionRef;  // Input action asset assigned for cinemachine's input reader
+        [SerializeField] InputActionAsset uiInput;
+       
         // Callbacks
         public event System.Action<Vector2> MoveEvent = delegate {};
         public event System.Action<Vector2> RotateCameraEvent = delegate {};
@@ -49,20 +51,25 @@ namespace StudioLand
 
         public void EnableGameplayInput()
         {
+            Debug.Log("GAMEPLAY ENABLED");
             gameInput.Gameplay.Enable();
             cinemachineActionRef.action.Enable();
+            uiInput.Disable();
         }
 
         public void EnableUIInput()
         {
+            Debug.Log("GAMEPLAY DISABLED");
             gameInput.Gameplay.Disable();
             cinemachineActionRef.action.Disable();
+            uiInput.Enable();
         }
 
         public void DisableAllInput()
         {
             gameInput.Gameplay.Disable();
             cinemachineActionRef.action.Disable();
+            uiInput.Disable();
         }
     }
 }

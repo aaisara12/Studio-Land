@@ -275,7 +275,7 @@ MonoBehaviour:
   m_PanelSettings: {fileID: 11400000, guid: 02ed2a51284648346a89f9e7f271bd50, type: 2}
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: 59a51abd9206c194284605e00fdc4558, type: 3}
-  m_SortingOrder: 1
+  m_SortingOrder: 99
 --- !u!4 &981537869
 Transform:
   m_ObjectHideFlags: 0
@@ -289,6 +289,82 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1027789685
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1027789688}
+  - component: {fileID: 1027789687}
+  - component: {fileID: 1027789686}
+  m_Layer: 5
+  m_Name: Deselct Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1027789686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027789685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a2417ee992403c41aecef9163c1e80e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  document: {fileID: 1027789687}
+  onClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1552684570}
+        m_TargetAssemblyTypeName: StudioLand.InstructionsUI, Assembly-CSharp
+        m_MethodName: CleanUpPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1027789687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027789685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f21c074d86024caca2a0034ce4f53f73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 02ed2a51284648346a89f9e7f271bd50, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 7e389b80544564a4d86bee72ef923951, type: 3}
+  m_SortingOrder: 0
+--- !u!4 &1027789688
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027789685}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1066607489
 GameObject:
@@ -419,7 +495,7 @@ MonoBehaviour:
   m_PanelSettings: {fileID: 11400000, guid: 02ed2a51284648346a89f9e7f271bd50, type: 2}
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: fd692440302c8e94fb1bda2aae9959d2, type: 3}
-  m_SortingOrder: 0
+  m_SortingOrder: 1
 --- !u!4 &1552684568
 Transform:
   m_ObjectHideFlags: 0
@@ -503,6 +579,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   playerInput: {fileID: 11400000, guid: 8a60c2cec9ca7fa469a37f8e2cf4d3be, type: 2}
+  spamThresholdTime: 0.5
   minigameEventChannel: {fileID: 11400000, guid: 96d4d4d5039e9c342970815ec411f9eb, type: 2}
   panelClosedEventChannel: {fileID: 11400000, guid: b405ca49d7e605a46a1f8d2514b142a5, type: 2}
   requestLoadSceneChannel: {fileID: 11400000, guid: 10507d1dc1375b34487fef0dd415207e, type: 2}
