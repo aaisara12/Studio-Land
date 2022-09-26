@@ -116,6 +116,7 @@ namespace StudioLand
                 {
                     currentInteractable.OnInteractionFinished -= CleanUpInteraction;
                     isInteractionEnabled = true;
+                    Debug.Log("FINISHED");
                 }
 
                 currentInteractable.OnInteractionFinished += CleanUpInteraction;

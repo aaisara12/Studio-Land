@@ -11,6 +11,7 @@ namespace StudioLand
     {
         [SerializeField] UIDocument document;
         [SerializeField] UnityEvent entranceAnimation;
+        [SerializeField] UnityEvent closingAnimation;
         [SerializeField] InputReaderSO playerInput;
 
         
@@ -28,6 +29,7 @@ namespace StudioLand
         void Awake()
         {
             root = document.rootVisualElement;
+            Initialize();
         }
 
         void OnEnable()
@@ -46,8 +48,10 @@ namespace StudioLand
         {
             playerInput.EnableUIInput();
             
-            root.Q<Label>("Title").text = minigame.title;
             entranceAnimation?.Invoke();
+            
+            root.Q<Label>("Title").text = minigame.title;
+            
 
             root.Q<Label>("Description").text = minigame.instructions;
 
@@ -57,6 +61,17 @@ namespace StudioLand
             root.Q("Picture").style.backgroundImage = pic;
 
             root.Q<Button>("Play").RegisterCallback<ClickEvent>(ev => PlayMinigame(minigame));
+
+            root.Q<VisualElement>("ExitBackground").RegisterCallback<FocusEvent>(ev => CleanUpPanel());
+
+            
+        }
+
+        void CleanUpPanel()
+        {
+            closingAnimation?.Invoke();
+            playerInput.EnableGameplayInput();
+            panelClosedEventChannel.RaiseEvent();
         }
         
         void HandleSceneReady()
@@ -64,12 +79,19 @@ namespace StudioLand
             // The reason we're putting it when the next scene readies and not when the current one is unloaded is simply
             // to save us from having to create an additional channel -- it shouldn't make an impact in this game
 
-            root.style.opacity = 0; // Hide the UI
+            Initialize();
         }
 
         void PlayMinigame(MinigameSO minigame)
         {
             requestLoadSceneChannel.RaiseEvent(minigame.scene);
+        }
+
+        void Initialize()
+        {
+            root.Q<VisualElement>("MainPanel").Focus();
+            root.style.opacity = 0;
+            root.style.display = DisplayStyle.None;
         }
 
         
