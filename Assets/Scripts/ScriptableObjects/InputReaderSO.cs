@@ -52,21 +52,21 @@ namespace StudioLand
         {
             gameInput.Gameplay.Enable();
             cinemachineActionRef.action.Enable();
-            uiInput.Disable();
+            //uiInput.Disable();
         }
 
         public void EnableUIInput()
         {
             gameInput.Gameplay.Disable();
             cinemachineActionRef.action.Disable();
-            uiInput.Enable();
+            //uiInput.Enable();
         }
 
         public void DisableAllInput()
         {
             gameInput.Gameplay.Disable();
             cinemachineActionRef.action.Disable();
-            uiInput.Disable();
+            //uiInput.Disable();
         }
     }
 }

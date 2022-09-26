@@ -48,7 +48,7 @@ namespace StudioLand
         {
             playerInput.EnableUIInput();
 
-            root.Q<VisualElement>("MainPanel").Focus();
+            //root.Q<VisualElement>("MainPanel").Focus();
             
             entranceAnimation?.Invoke();
             
