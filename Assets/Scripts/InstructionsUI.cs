@@ -47,6 +47,8 @@ namespace StudioLand
         void HandleNewMinigame(MinigameSO minigame)
         {
             playerInput.EnableUIInput();
+
+            root.Q<VisualElement>("MainPanel").Focus();
             
             entranceAnimation?.Invoke();
             
@@ -61,8 +63,6 @@ namespace StudioLand
             root.Q("Picture").style.backgroundImage = pic;
 
             root.Q<Button>("Play").RegisterCallback<ClickEvent>(ev => PlayMinigame(minigame));
-
-            root.Q<VisualElement>("ExitBackground").RegisterCallback<FocusEvent>(ev => CleanUpPanel());
 
             
         }
@@ -90,6 +90,7 @@ namespace StudioLand
         void Initialize()
         {
             root.Q<VisualElement>("MainPanel").Focus();
+            root.Q<VisualElement>("ExitBackground").RegisterCallback<FocusEvent>(ev => CleanUpPanel());
             root.style.opacity = 0;
             root.style.display = DisplayStyle.None;
         }
