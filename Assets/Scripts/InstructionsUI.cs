@@ -17,6 +17,7 @@ namespace StudioLand
 
         [Header("Broadcasts on")]
         [SerializeField] MinigameEventChannelSO minigameEventChannel;
+        [SerializeField] VoidEventChannelSO panelClosedEventChannel;
 
         [Header("Listens on")]
         [SerializeField] LoadEventChannelSO requestLoadSceneChannel;

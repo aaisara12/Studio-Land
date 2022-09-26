@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,10 @@ using UnityEngine;
 namespace StudioLand
 {
     /// <summary>
-    /// Script for ensuring interactions are processed one at a time 
+    /// Script for ensuring interactions are processed one at a time. As with most managers, the Interaction Manager
+    /// serves to unify its units (interactables) under a common network to prevent the units from interfering with
+    /// each other. It keeps the interactables "respectful" of one another. For example, if one interactable is currently
+    /// being activated, no other interactable under the interaction manager can activate.
     /// </summary>
     public class InteractionManager : MonoBehaviour
     {
@@ -13,6 +17,7 @@ namespace StudioLand
         [SerializeField] InteractablesRuntimeSetSO interactablesRuntimeSet;
         [SerializeField] TransformAnchor interactorTransformAnchor;     // This will be the player, usually
         Interactable currentInteractable;
+        bool isInteractionEnabled = true;
 
         [Header("Broadcasts on")]
         [SerializeField] VoidEventChannelSO interactionReadyChannelSO;
@@ -23,10 +28,23 @@ namespace StudioLand
 
         bool detectedPotentialInteractableLastUpdate = false;
 
+        void OnEnable()
+        {
+            inputReader.InteractEvent += HandleInteractionInput;
+        }
+
+        void OnDisable()
+        {
+            inputReader.InteractEvent -= HandleInteractionInput;
+        }
+
+
+
         // Update is called once per frame
         void Update()
         {
-            SetCurrentInteractable();
+            if(isInteractionEnabled)
+                SetCurrentInteractable();
         }
 
         void SetCurrentInteractable()
@@ -85,6 +103,30 @@ namespace StudioLand
             }
 
             return nextCurrentInteractable;
+        }
+
+
+        void HandleInteractionInput()
+        {
+            if(currentInteractable != null)
+            {
+                currentInteractable.ExecuteInteraction();
+
+                void CleanUpInteraction()
+                {
+                    currentInteractable.OnInteractionFinished -= CleanUpInteraction;
+                    isInteractionEnabled = true;
+                }
+
+                currentInteractable.OnInteractionFinished += CleanUpInteraction;
+
+                // Wipe the current interactable state
+                currentInteractable.SetHighlight(false);
+                currentInteractable = null;     
+
+                // Prevent interaction manager from trying to select an interactable
+                isInteractionEnabled = false;
+            }
         }
 
     }

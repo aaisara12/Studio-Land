@@ -29,7 +29,8 @@ namespace StudioLand
 
         public void OnInteract(InputAction.CallbackContext context)
         {
-            InteractEvent?.Invoke();
+            if(context.performed)
+                InteractEvent?.Invoke();
         }
 
 

@@ -9,7 +9,7 @@ namespace StudioLand
     /// <summary>
     /// Simple component for notifying the game that a player wants to play a minigame
     /// </summary>
-    public class MinigamePlayer : MonoBehaviour
+    public class MinigameRequester : MonoBehaviour
     {
         // Note: Even though this behaviour doesn't really NEED to be a monobehaviour (since it's mostly functional),
         // having it exist in the scene as a component is easier to understand than a ScriptableObject asset, which
