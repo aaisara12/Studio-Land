@@ -114,9 +114,9 @@ namespace StudioLand
 
                 void CleanUpInteraction()
                 {
-                    currentInteractable.OnInteractionFinished -= CleanUpInteraction;
+                    // How can we clean up after having this be invoked?
+                    //currentInteractable.OnInteractionFinished -= CleanUpInteraction;
                     isInteractionEnabled = true;
-                    Debug.Log("FINISHED");
                 }
 
                 currentInteractable.OnInteractionFinished += CleanUpInteraction;

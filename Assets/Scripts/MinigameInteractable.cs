@@ -14,7 +14,7 @@ namespace StudioLand
         [SerializeField] MinigameRequester minigameRequester;
         [SerializeField] VoidEventChannelSO instructionsPanelClosedEventChannel;    // When the instruction panel closes, interaction over
         
-        void OnAwake()
+        void Awake()
         {
             instructionsPanelClosedEventChannel.OnEventRaised += HandleInstructionsPanelClosed;
         }
