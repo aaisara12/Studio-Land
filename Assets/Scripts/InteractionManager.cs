@@ -22,6 +22,8 @@ namespace StudioLand
         [Header("Broadcasts on")]
         [SerializeField] VoidEventChannelSO interactionReadyChannelSO;
         [SerializeField] VoidEventChannelSO interactionUnreadyChannelSO;
+        [Header("Listens on")]
+        [SerializeField] VoidEventChannelSO sceneReadyEventChannelSO;
 
 
 
@@ -31,11 +33,13 @@ namespace StudioLand
         void OnEnable()
         {
             inputReader.InteractEvent += HandleInteractionInput;
+            sceneReadyEventChannelSO.OnEventRaised += HandleSceneReadied;
         }
 
         void OnDisable()
         {
             inputReader.InteractEvent -= HandleInteractionInput;
+            sceneReadyEventChannelSO.OnEventRaised -= HandleSceneReadied;
         }
 
 
@@ -129,6 +133,11 @@ namespace StudioLand
                 // Prevent interaction manager from trying to select an interactable
                 isInteractionEnabled = false;
             }
+        }
+
+        void HandleSceneReadied()
+        {
+            isInteractionEnabled = true;    // Just in case it was still false when the scene was last unloaded
         }
 
     }
