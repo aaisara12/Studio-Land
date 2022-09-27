@@ -1,0 +1,41 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UIElements;
+
+namespace StudioLand
+{
+    public abstract class PanelUI : MonoBehaviour
+    {
+        [SerializeField] UIAnimation entranceAnimation;
+        [SerializeField] UIAnimation closingAnimation;
+        [SerializeField] UIDocument document;
+        [SerializeField] UIFocuser focuser;
+        protected VisualElement root;
+
+        public abstract bool CanDeselect {get;}
+
+
+        void Awake()
+        {
+            Reset();
+        }
+
+        public void AnimateIn()
+        {
+            entranceAnimation?.StartAnimation();
+        }
+        public void AnimateOut()
+        {
+            closingAnimation?.StartAnimation();
+        }
+
+        public void Reset()
+        {
+            root = document.rootVisualElement;
+            root.style.opacity = 0;
+            root.style.display = DisplayStyle.None;
+        }
+    }
+}
+

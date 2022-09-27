@@ -243,6 +243,133 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &716127203
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 716127207}
+  - component: {fileID: 716127206}
+  - component: {fileID: 716127205}
+  - component: {fileID: 716127204}
+  - component: {fileID: 716127208}
+  m_Layer: 5
+  m_Name: Score UI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &716127204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716127203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ee99ffa30572e542974b4405cb7ff94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  document: {fileID: 716127206}
+  duration: 0.3
+  playOnAwake: 0
+--- !u!114 &716127205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716127203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46aafab741a31b8499629f73fb324f19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entranceAnimation: {fileID: 716127204}
+  closingAnimation: {fileID: 0}
+  document: {fileID: 716127206}
+  focuser: {fileID: 1395074021}
+  mainScene:
+    m_AssetGUID: cdfff7cf8e259de4db3463c3810a2129
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  requestLoadSceneChannel: {fileID: 11400000, guid: 10507d1dc1375b34487fef0dd415207e, type: 2}
+--- !u!114 &716127206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716127203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f21c074d86024caca2a0034ce4f53f73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 02ed2a51284648346a89f9e7f271bd50, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 5d62e65e02c8985449cb68a50d72d4b4, type: 3}
+  m_SortingOrder: 1
+--- !u!4 &716127207
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716127203}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &716127208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716127203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fddb5dfd06e942419da29d2601f30fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatEventChannel: {fileID: 11400000, guid: 7b7ffad854e9d7348a1e0d89e48c3815, type: 2}
+  callback:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 716127205}
+        m_TargetAssemblyTypeName: StudioLand.ScoreUI, Assembly-CSharp
+        m_MethodName: Initialize
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1395074021}
+        m_TargetAssemblyTypeName: StudioLand.UIFocuser, Assembly-CSharp
+        m_MethodName: RequestFocus
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 716127205}
+          m_ObjectArgumentAssemblyTypeName: StudioLand.PanelUI, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &981537867
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,9 +451,9 @@ MonoBehaviour:
   onClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1552684570}
-        m_TargetAssemblyTypeName: StudioLand.InstructionsUI, Assembly-CSharp
-        m_MethodName: CleanUpPanel
+      - m_Target: {fileID: 1395074021}
+        m_TargetAssemblyTypeName: StudioLand.UIFocuser, Assembly-CSharp
+        m_MethodName: Defocus
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -364,7 +491,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1066607489
 GameObject:
@@ -459,6 +586,80 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1395074020
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1395074022}
+  - component: {fileID: 1395074021}
+  - component: {fileID: 1395074023}
+  m_Layer: 0
+  m_Name: UI Focuser
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1395074021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1395074020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 371e3149bd98f394e96126c71ac17579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deselectBackground: {fileID: 1027789687}
+  playerInput: {fileID: 11400000, guid: 8a60c2cec9ca7fa469a37f8e2cf4d3be, type: 2}
+--- !u!4 &1395074022
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1395074020}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1395074023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1395074020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 923152c34da8d5b4c8f94b93f9120d82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voidEventChannel: {fileID: 11400000, guid: f6622d6f16403f542bd734c0e3f37146, type: 2}
+  callback:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1395074021}
+        m_TargetAssemblyTypeName: StudioLand.UIFocuser, Assembly-CSharp
+        m_MethodName: Reset
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1552684566
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,6 +674,7 @@ GameObject:
   - component: {fileID: 1552684570}
   - component: {fileID: 1552684571}
   - component: {fileID: 1552684572}
+  - component: {fileID: 1552684573}
   m_Layer: 5
   m_Name: Instructions UI
   m_TagString: Untagged
@@ -508,7 +710,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1552684569
 MonoBehaviour:
@@ -547,43 +749,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f478cc4ef60aad4469dc463184de9473, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entranceAnimation: {fileID: 1552684571}
+  closingAnimation: {fileID: 1552684572}
   document: {fileID: 1552684567}
-  entranceAnimation:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1552684571}
-        m_TargetAssemblyTypeName: StudioLand.AppearFromBelowTween, Assembly-CSharp
-        m_MethodName: StartAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  closingAnimation:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1552684572}
-        m_TargetAssemblyTypeName: StudioLand.DisappearBelowTween, Assembly-CSharp
-        m_MethodName: StartAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  playerInput: {fileID: 11400000, guid: 8a60c2cec9ca7fa469a37f8e2cf4d3be, type: 2}
-  spamThresholdTime: 0.5
-  minigameEventChannel: {fileID: 11400000, guid: 96d4d4d5039e9c342970815ec411f9eb, type: 2}
-  panelClosedEventChannel: {fileID: 11400000, guid: b405ca49d7e605a46a1f8d2514b142a5, type: 2}
+  focuser: {fileID: 1395074021}
   requestLoadSceneChannel: {fileID: 11400000, guid: 10507d1dc1375b34487fef0dd415207e, type: 2}
-  sceneReadyEventChannel: {fileID: 11400000, guid: f6622d6f16403f542bd734c0e3f37146, type: 2}
 --- !u!114 &1552684571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -614,3 +784,43 @@ MonoBehaviour:
   document: {fileID: 1552684567}
   duration: 0.3
   playOnAwake: 0
+--- !u!114 &1552684573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552684566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1d7e155920adad4da30a5f43e2859a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minigameEventChannel: {fileID: 11400000, guid: 96d4d4d5039e9c342970815ec411f9eb, type: 2}
+  callback:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1552684570}
+        m_TargetAssemblyTypeName: StudioLand.InstructionsUI, Assembly-CSharp
+        m_MethodName: Initialize
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1395074021}
+        m_TargetAssemblyTypeName: StudioLand.UIFocuser, Assembly-CSharp
+        m_MethodName: RequestFocus
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1552684570}
+          m_ObjectArgumentAssemblyTypeName: StudioLand.PanelUI, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

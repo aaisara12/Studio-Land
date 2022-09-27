@@ -7,7 +7,7 @@ using UnityEngine.UIElements.Experimental;
 
 namespace StudioLand
 {
-    public class AppearFromBelowTween : MonoBehaviour
+    public class AppearFromBelowTween : UIAnimation
     {
         [SerializeField] UIDocument document;
         [SerializeField] float duration = 1;
@@ -22,7 +22,7 @@ namespace StudioLand
                 StartAnimation();
         }
 
-        public void StartAnimation()
+        public override void StartAnimation()
         {
             // Enable panel
             root.style.display = DisplayStyle.Flex;

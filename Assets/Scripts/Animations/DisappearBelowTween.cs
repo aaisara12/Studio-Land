@@ -7,7 +7,7 @@ using UnityEngine.UIElements.Experimental;
 
 namespace StudioLand
 {
-    public class DisappearBelowTween : MonoBehaviour
+    public class DisappearBelowTween : UIAnimation
     {
         [SerializeField] UIDocument document;
         [SerializeField] float duration = 1;
@@ -22,7 +22,7 @@ namespace StudioLand
                 StartAnimation();
         }
 
-        public void StartAnimation()
+        public override void StartAnimation()
         {
             // TODO: Animate the position of the document by adding it to the old and new style values struct
             StyleValues oldValues;

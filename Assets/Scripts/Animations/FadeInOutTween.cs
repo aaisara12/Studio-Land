@@ -5,7 +5,7 @@ using DG.Tweening;
 
 namespace StudioLand
 {
-    public class FadeInOutTween : MonoBehaviour
+    public class FadeInOutTween : UIAnimation
     {
         [SerializeField] TMPro.TMP_Text text;
         [SerializeField] float cycleTime = 0.5f;
@@ -16,7 +16,7 @@ namespace StudioLand
             if(playOnAwake)
                 StartAnimation();
         }
-        public void StartAnimation()
+        public override void StartAnimation()
         {
             text.DOFade(0, cycleTime * 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
         }
