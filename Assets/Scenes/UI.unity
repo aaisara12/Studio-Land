@@ -294,6 +294,15 @@ MonoBehaviour:
   closingAnimation: {fileID: 0}
   document: {fileID: 716127206}
   focuser: {fileID: 1395074021}
+  OnAnimateIn:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAnimateOut:
+    m_PersistentCalls:
+      m_Calls: []
+  OnReset:
+    m_PersistentCalls:
+      m_Calls: []
   mainScene:
     m_AssetGUID: cdfff7cf8e259de4db3463c3810a2129
     m_SubObjectName: 
@@ -753,6 +762,39 @@ MonoBehaviour:
   closingAnimation: {fileID: 1552684572}
   document: {fileID: 1552684567}
   focuser: {fileID: 1395074021}
+  OnAnimateIn:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAnimateOut:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: b405ca49d7e605a46a1f8d2514b142a5, type: 2}
+        m_TargetAssemblyTypeName: VoidEventChannelSO, Assembly-CSharp
+        m_MethodName: RaiseEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnReset:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: b405ca49d7e605a46a1f8d2514b142a5, type: 2}
+        m_TargetAssemblyTypeName: VoidEventChannelSO, Assembly-CSharp
+        m_MethodName: RaiseEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   requestLoadSceneChannel: {fileID: 11400000, guid: 10507d1dc1375b34487fef0dd415207e, type: 2}
 --- !u!114 &1552684571
 MonoBehaviour:

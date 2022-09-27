@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.Events;
 
 namespace StudioLand
 {
@@ -11,6 +12,10 @@ namespace StudioLand
         [SerializeField] UIAnimation closingAnimation;
         [SerializeField] UIDocument document;
         [SerializeField] UIFocuser focuser;
+
+        [SerializeField] UnityEvent OnAnimateIn = new UnityEvent();
+        [SerializeField] UnityEvent OnAnimateOut = new UnityEvent();
+        [SerializeField] UnityEvent OnReset = new UnityEvent();
         protected VisualElement root;
 
         public abstract bool CanDeselect {get;}
@@ -24,10 +29,12 @@ namespace StudioLand
         public void AnimateIn()
         {
             entranceAnimation?.StartAnimation();
+            OnAnimateIn?.Invoke();
         }
         public void AnimateOut()
         {
             closingAnimation?.StartAnimation();
+            OnAnimateOut?.Invoke();
         }
 
         public void Reset()
@@ -35,6 +42,7 @@ namespace StudioLand
             root = document.rootVisualElement;
             root.style.opacity = 0;
             root.style.display = DisplayStyle.None;
+            OnReset?.Invoke();
         }
     }
 }
