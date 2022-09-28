@@ -48,11 +48,11 @@ public class EventTester : EditorWindow
         root = rootVisualElement;
 
         // Import UXML -- NOTE: the "visual tree" is the structure of the UI created in UI Builder
-        var original = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/Editor/EventTester.uxml");
+        var original = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>("Assets/StudioLandCore/Editor/EventTester.uxml");
         TemplateContainer visualTreeInstance = original.CloneTree();
         root.Add(visualTreeInstance);
 
-        StyleSheet styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Editor/EventTester.uss");
+        StyleSheet styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/StudioLandCore/Editor/EventTester.uss");
         root.styleSheets.Add(styleSheet);
 
 
