@@ -52,6 +52,7 @@ namespace StudioLand
         public void Reset()
         {
             currentFocus?.Reset();
+            currentFocus = null;
             deselectBackground.rootVisualElement.style.display = DisplayStyle.None;
         }
 
