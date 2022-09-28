@@ -9,7 +9,6 @@ namespace StudioLand
     public class InputReaderSO : DescriptionBaseSO, GameInput.IGameplayActions, GameInput.IPersistentActions
     {
         GameInput gameInput = default;
-        [SerializeField] InputActionReference cinemachineActionRef;  // Input action asset assigned for cinemachine's input reader
         [SerializeField] InputActionAsset uiInput;
        
         // Callbacks
@@ -41,8 +40,8 @@ namespace StudioLand
                 QuitEvent?.Invoke();
         }
 
-
-
+        private InputActionReference cameraRotation;
+        public InputActionReference GetCameraRotationActionReference => cameraRotation; // Method for injecting reference to external input modules
 
         // NOTE: OnEnable for a ScriptableObject is called either when it is first created or the project is recompiled
         void OnEnable()
@@ -55,29 +54,26 @@ namespace StudioLand
                 gameInput.Gameplay.SetCallbacks(this);
                 gameInput.Persistent.SetCallbacks(this);
                 gameInput.Persistent.Enable();      // Keep this enabled throughout the entire duration of the game
+                
+                cameraRotation = InputActionReference.Create(gameInput.Gameplay.RotateCamera);
             }
         }
 
         public void EnableGameplayInput()
         {
-            Debug.Log("GAMEPLAY ENABLED");
             gameInput.Gameplay.Enable();
-            cinemachineActionRef.action.Enable();
             uiInput.Disable();
         }
 
         public void EnableUIInput()
         {
-            Debug.Log("GAMEPLAY DISABLED");
             gameInput.Gameplay.Disable();
-            cinemachineActionRef.action.Disable();
             uiInput.Enable();
         }
 
         public void DisableAllInput()
         {
             gameInput.Gameplay.Disable();
-            cinemachineActionRef.action.Disable();
             uiInput.Disable();
         }
     }

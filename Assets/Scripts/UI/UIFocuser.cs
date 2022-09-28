@@ -31,7 +31,7 @@ namespace StudioLand
         void Focus(PanelUI panel)
         {
             deselectBackground.rootVisualElement.style.display = panel.CanDeselect? DisplayStyle.Flex : DisplayStyle.None;
-            playerInput.EnableUIInput();
+            //playerInput.EnableUIInput();
             panel.AnimateIn();
             currentFocus = panel;
 

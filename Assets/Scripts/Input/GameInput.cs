@@ -115,7 +115,7 @@ namespace StudioLand
                 },
                 {
                     ""name"": """",
-                    ""id"": ""0a22c5cd-3dd0-44f7-85fd-d1733af1c678"",
+                    ""id"": ""fb5cd432-2965-4b3c-ad4f-83fd421906d5"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -156,6 +156,17 @@ namespace StudioLand
                     ""name"": """",
                     ""id"": ""3471d391-62db-4755-b440-ecd027110b79"",
                     ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Quit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6edffd3c-c8fc-4715-85c4-2a12d4e1242f"",
+                    ""path"": """",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

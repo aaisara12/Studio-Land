@@ -11,7 +11,8 @@
                     "id": "89c05d99-ab41-4815-9cfc-9507983af2fb",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "RotateCamera",
@@ -19,7 +20,8 @@
                     "id": "57f6d91d-6f27-4375-accc-39df4e21bdcc",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Interact",
@@ -27,7 +29,8 @@
                     "id": "3c90a4a3-3883-4b0d-9dd5-83e52a817f85",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -88,7 +91,7 @@
                 },
                 {
                     "name": "",
-                    "id": "0a22c5cd-3dd0-44f7-85fd-d1733af1c678",
+                    "id": "fb5cd432-2965-4b3c-ad4f-83fd421906d5",
                     "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
@@ -120,7 +123,8 @@
                     "id": "c75fe599-0120-49c8-a376-614c898763ad",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -128,6 +132,17 @@
                     "name": "",
                     "id": "3471d391-62db-4755-b440-ecd027110b79",
                     "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Quit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6edffd3c-c8fc-4715-85c4-2a12d4e1242f",
+                    "path": "",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
