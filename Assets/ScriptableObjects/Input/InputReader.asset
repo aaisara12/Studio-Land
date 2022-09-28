@@ -17,5 +17,5 @@ MonoBehaviour:
     across the entire game. GameInput is a non-monobehaviour and thus requires a
     ScriptableObject wrapper in order to "live" in the project and share an instance
     of it to other scripts.
-  uiInput: {fileID: -944628639613478452, guid: 5af24a746b199d945b2aea0b3b50e409, type: 3}
   cinemachineActionRef: {fileID: -2624864948541420505, guid: 5cca5f0f75d2191459146477e002c701, type: 3}
+  uiInput: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
