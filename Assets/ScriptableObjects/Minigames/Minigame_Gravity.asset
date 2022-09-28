@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa3debfd4ccc54d41adeaa0a89beb1e3, type: 3}
   m_Name: Minigame_Gravity
   m_EditorClassIdentifier: 
-  title: Gravity
+  title: Planetary Gravity and Physics
   highestScore: 0
   scene:
-    m_AssetGUID: 
+    m_AssetGUID: 70737fd012d744812a57d3a725f8445a
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  instructions: Stuff
+  instructions: 'Remember to change this later to something more interesting
+
+    (anyone
+    get the reference?)'
   picture: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
