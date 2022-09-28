@@ -33,6 +33,14 @@ MonoBehaviour:
     m_Address: Assets/Scenes/Main.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 70737fd012d744812a57d3a725f8445a
+    m_Address: Assets/Scenes/PlanetaryGravityScene.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f9575c9082131489c8dec7819ee7df05
+    m_Address: Assets/Scenes/Minigame - Rhythm Game.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 2780b6b57187abe4fae4d0484fc5b5bd, type: 2}
   m_SchemaSet:
