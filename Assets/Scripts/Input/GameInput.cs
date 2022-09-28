@@ -124,6 +124,33 @@ namespace StudioLand
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Persistent"",
+            ""id"": ""20eeebf0-b149-44f0-8996-819b153998e4"",
+            ""actions"": [
+                {
+                    ""name"": ""Quit"",
+                    ""type"": ""Button"",
+                    ""id"": ""c75fe599-0120-49c8-a376-614c898763ad"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""3471d391-62db-4755-b440-ecd027110b79"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Quit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -133,6 +160,9 @@ namespace StudioLand
             m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
             m_Gameplay_RotateCamera = m_Gameplay.FindAction("RotateCamera", throwIfNotFound: true);
             m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
+            // Persistent
+            m_Persistent = asset.FindActionMap("Persistent", throwIfNotFound: true);
+            m_Persistent_Quit = m_Persistent.FindAction("Quit", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -227,11 +257,48 @@ namespace StudioLand
             }
         }
         public GameplayActions @Gameplay => new GameplayActions(this);
+
+        // Persistent
+        private readonly InputActionMap m_Persistent;
+        private IPersistentActions m_PersistentActionsCallbackInterface;
+        private readonly InputAction m_Persistent_Quit;
+        public struct PersistentActions
+        {
+            private @GameInput m_Wrapper;
+            public PersistentActions(@GameInput wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Quit => m_Wrapper.m_Persistent_Quit;
+            public InputActionMap Get() { return m_Wrapper.m_Persistent; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(PersistentActions set) { return set.Get(); }
+            public void SetCallbacks(IPersistentActions instance)
+            {
+                if (m_Wrapper.m_PersistentActionsCallbackInterface != null)
+                {
+                    @Quit.started -= m_Wrapper.m_PersistentActionsCallbackInterface.OnQuit;
+                    @Quit.performed -= m_Wrapper.m_PersistentActionsCallbackInterface.OnQuit;
+                    @Quit.canceled -= m_Wrapper.m_PersistentActionsCallbackInterface.OnQuit;
+                }
+                m_Wrapper.m_PersistentActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @Quit.started += instance.OnQuit;
+                    @Quit.performed += instance.OnQuit;
+                    @Quit.canceled += instance.OnQuit;
+                }
+            }
+        }
+        public PersistentActions @Persistent => new PersistentActions(this);
         public interface IGameplayActions
         {
             void OnMove(InputAction.CallbackContext context);
             void OnRotateCamera(InputAction.CallbackContext context);
             void OnInteract(InputAction.CallbackContext context);
+        }
+        public interface IPersistentActions
+        {
+            void OnQuit(InputAction.CallbackContext context);
         }
     }
 }

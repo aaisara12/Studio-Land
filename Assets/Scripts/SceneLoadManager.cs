@@ -73,7 +73,7 @@ namespace StudioLand
 
             void EnableInputAndFadeIn(AsyncOperationHandle<SceneInstance> op)
             {
-                inputReader.EnableGameplayInput();
+                //inputReader.EnableGameplayInput();
                 fadeInRequestChannel.RaiseEvent(fadeDuration);
                 currentlyLoadedGameScene = requestedScene;
                 sceneReadyEventChannel.RaiseEvent();

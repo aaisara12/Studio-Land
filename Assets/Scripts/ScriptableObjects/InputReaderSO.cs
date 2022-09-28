@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 namespace StudioLand
 {
     [CreateAssetMenu( fileName = "InputReader", menuName = "ScriptableObjects/Input Reader")]
-    public class InputReaderSO : DescriptionBaseSO, GameInput.IGameplayActions
+    public class InputReaderSO : DescriptionBaseSO, GameInput.IGameplayActions, GameInput.IPersistentActions
     {
         GameInput gameInput = default;
         [SerializeField] InputActionReference cinemachineActionRef;  // Input action asset assigned for cinemachine's input reader
@@ -16,6 +16,7 @@ namespace StudioLand
         public event System.Action<Vector2> MoveEvent = delegate {};
         public event System.Action<Vector2> RotateCameraEvent = delegate {};
         public event System.Action InteractEvent = delegate {};
+        public event System.Action QuitEvent = delegate {};
 
 
         public void OnMove(InputAction.CallbackContext context)
@@ -34,6 +35,12 @@ namespace StudioLand
                 InteractEvent?.Invoke();
         }
 
+        public void OnQuit(InputAction.CallbackContext context)
+        {
+            if(context.performed)
+                QuitEvent?.Invoke();
+        }
+
 
 
 
@@ -46,6 +53,8 @@ namespace StudioLand
                 // Because the project always recompiles when the input mapping changes, this SO will always be up to date
                 gameInput = new GameInput();
                 gameInput.Gameplay.SetCallbacks(this);
+                gameInput.Persistent.SetCallbacks(this);
+                gameInput.Persistent.Enable();      // Keep this enabled throughout the entire duration of the game
             }
         }
 

@@ -21,7 +21,7 @@ namespace StudioLand
         public abstract bool CanDeselect {get;}
 
 
-        void Awake()
+        protected virtual void Awake()
         {
             Reset();
         }

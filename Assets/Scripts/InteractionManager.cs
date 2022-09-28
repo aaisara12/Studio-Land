@@ -121,7 +121,7 @@ namespace StudioLand
                     // How can we clean up after having this be invoked?
                     //currentInteractable.OnInteractionFinished -= CleanUpInteraction;
                     isInteractionEnabled = true;
-                    inputReader.EnableGameplayInput();  // In case gameplay was disabled by interaction
+                    //inputReader.EnableGameplayInput();  // In case gameplay was disabled by interaction
                 }
 
                 currentInteractable.OnInteractionFinished += CleanUpInteraction;
