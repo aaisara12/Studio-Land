@@ -7,6 +7,7 @@ namespace StudioLand
     public abstract class UIAnimation : MonoBehaviour
     {
         public abstract void StartAnimation();
+        public abstract bool IsCurrentlyAnimating {get;}
     }
 }
 

@@ -11,6 +11,8 @@ namespace StudioLand
         [SerializeField] float cycleTime = 0.5f;
         [SerializeField] bool playOnAwake = false;
 
+        bool currentlyAnimating = false;
+
         void Awake()
         {
             if(playOnAwake)
@@ -18,8 +20,11 @@ namespace StudioLand
         }
         public override void StartAnimation()
         {
-            text.DOFade(0, cycleTime * 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
+            currentlyAnimating = true;
+            text.DOFade(0, cycleTime * 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine).OnComplete(() => currentlyAnimating = false);
         }
+
+        public override bool IsCurrentlyAnimating => currentlyAnimating;
     }
 }
 

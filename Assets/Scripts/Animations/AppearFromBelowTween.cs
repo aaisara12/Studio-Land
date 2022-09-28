@@ -13,6 +13,7 @@ namespace StudioLand
         [SerializeField] float duration = 1;
         [SerializeField] bool playOnAwake = false;
         VisualElement root;
+        bool currentlyAnimating = false;
 
         void Awake()
         {
@@ -35,9 +36,11 @@ namespace StudioLand
             newValues.opacity = 1;
             newValues.top = 0;
 
-            root.experimental.animation.Start(oldValues, newValues, (int)(duration * 1000));
+            root.experimental.animation.Start(oldValues, newValues, (int)(duration * 1000)).onAnimationCompleted += () => currentlyAnimating = false;
             
         }
+
+        public override bool IsCurrentlyAnimating => currentlyAnimating;
     }
 }
 

@@ -20,6 +20,8 @@ namespace StudioLand
 
         public abstract bool CanDeselect {get;}
 
+        public bool isAnimating => entranceAnimation.IsCurrentlyAnimating || closingAnimation.IsCurrentlyAnimating;
+
 
         protected virtual void Awake()
         {

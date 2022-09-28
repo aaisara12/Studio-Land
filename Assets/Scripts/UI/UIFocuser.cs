@@ -13,6 +13,8 @@ namespace StudioLand
         [SerializeField] UnityEvent OnFocus = new UnityEvent();
         [SerializeField] UnityEvent OnDefocus = new UnityEvent();
         PanelUI currentFocus;
+        PanelUI previousFocus;
+
 
         void Awake()
         {
@@ -20,9 +22,10 @@ namespace StudioLand
         }
         public void RequestFocus(PanelUI panel)
         {
-            Defocus();
+            //Defocus();
 
-            Focus(panel);
+            if(currentFocus == null && (previousFocus == null || !previousFocus.isAnimating))
+                Focus(panel);
         }
 
         void Focus(PanelUI panel)
@@ -38,6 +41,7 @@ namespace StudioLand
         public void Defocus()
         {
             currentFocus?.AnimateOut();
+            previousFocus = currentFocus;
             currentFocus = null;
             deselectBackground.rootVisualElement.style.display = DisplayStyle.None;
 
