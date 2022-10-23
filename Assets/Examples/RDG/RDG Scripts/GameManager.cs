@@ -38,9 +38,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject introMenu;
     [SerializeField] GameObject inGameMenu;
-    [SerializeField] GameObject pauseMenu;
-    [SerializeField] GameObject victoryMenu;
-    [SerializeField] GameObject defeatMenu;
+    // [SerializeField] GameObject pauseMenu;
+    // [SerializeField] GameObject victoryMenu;
+    // [SerializeField] GameObject defeatMenu;
     [SerializeField] GameObject hintMenu;
 
 
@@ -75,10 +75,10 @@ public class GameManager : MonoBehaviour
         
         introMenu.SetActive(true);
         inGameMenu.SetActive(false);
-        victoryMenu.SetActive(false);
-        defeatMenu.SetActive(false);
+        //victoryMenu.SetActive(false);
+        //defeatMenu.SetActive(false);
         hintMenu.SetActive(false);
-        pauseMenu.SetActive(false);
+        //pauseMenu.SetActive(false);
     }
 
     public void ActivateRune(){
@@ -120,7 +120,7 @@ public class GameManager : MonoBehaviour
             gamePaused = !gamePaused;
 
             inGameMenu.SetActive(!gamePaused);
-            pauseMenu.SetActive(gamePaused);
+            //pauseMenu.SetActive(gamePaused);
             hintMenu.SetActive(false);
             
             if (gamePaused){
@@ -138,7 +138,7 @@ public class GameManager : MonoBehaviour
         gameEnded = true;
         gameLost = true;
         inGameMenu.SetActive(false);
-        defeatMenu.SetActive(true);
+        //defeatMenu.SetActive(true);
     }
 
     public void Victory(){
@@ -156,7 +156,7 @@ public class GameManager : MonoBehaviour
         finalScore.text = "Score: " + timeRem;
 
         inGameMenu.SetActive(false);
-        victoryMenu.SetActive(true);
+        //victoryMenu.SetActive(true);
         
         //UPLOAD SCORE TO LOBBY
     }

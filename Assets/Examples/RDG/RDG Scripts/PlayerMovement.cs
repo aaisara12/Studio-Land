@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour{
     private void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Escape) && gameStarted){
+        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(0)) && gameStarted){
             GameManager.instance.PauseUnpause();
         }
 
@@ -75,6 +75,7 @@ public class PlayerMovement : MonoBehaviour{
         animator.SetBool("IsMoving", dir.magnitude > 0);
 
         GetComponent<Rigidbody2D>().velocity = speed * dir;
+        //gameObject.transform.position.z = new Vector
     }
 
     void OnCollisionEnter2D(Collision2D collision){

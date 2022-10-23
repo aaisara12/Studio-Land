@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class CameraController : MonoBehaviour
 {
 
     public Room currRoom;
     public float camSpeed;
+
+    [SerializeField] Camera camera;
+    [SerializeField] RenderPipelineAsset renderer2D;
 
     public static CameraController instance { get; private set; }
 
@@ -22,6 +26,12 @@ public class CameraController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    void Start()
+    {
+            GraphicsSettings.renderPipelineAsset = renderer2D;
+            Debug.Log("renderer changed to 2d");
     }
 
     void Update()

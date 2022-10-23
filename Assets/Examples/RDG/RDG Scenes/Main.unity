@@ -645,6 +645,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currRoom: {fileID: 0}
   camSpeed: 100
+  camera: {fileID: 519420031}
+  renderer2D: {fileID: 11400000, guid: 18a5509bd69097346a43d7b0f5fd205d, type: 2}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -668,7 +670,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60
   orthographic: 1
@@ -810,33 +812,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2839746533089115493, guid: 47d480f086dfb87419cc085a5e4b4552, type: 3}
-      propertyPath: speed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3917783876911357825, guid: 47d480f086dfb87419cc085a5e4b4552, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3917783877107590986, guid: 47d480f086dfb87419cc085a5e4b4552, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3917783877107590986, guid: 47d480f086dfb87419cc085a5e4b4552, type: 3}
+    - target: {fileID: 5628018140324151388, guid: 47d480f086dfb87419cc085a5e4b4552, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5628018140324151388, guid: 47d480f086dfb87419cc085a5e4b4552, type: 3}
-      propertyPath: m_Layer
-      value: 3
+    - target: {fileID: 5628018140324151390, guid: 47d480f086dfb87419cc085a5e4b4552, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5628018140324151390, guid: 47d480f086dfb87419cc085a5e4b4552, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5628018140324151390, guid: 47d480f086dfb87419cc085a5e4b4552, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5628018140324151390, guid: 47d480f086dfb87419cc085a5e4b4552, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5628018141983903104, guid: 47d480f086dfb87419cc085a5e4b4552, type: 3}
       propertyPath: m_Name
       value: Cat
-      objectReference: {fileID: 0}
-    - target: {fileID: 5628018141983903104, guid: 47d480f086dfb87419cc085a5e4b4552, type: 3}
-      propertyPath: m_Layer
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5628018141983903106, guid: 47d480f086dfb87419cc085a5e4b4552, type: 3}
       propertyPath: m_RootOrder
@@ -852,7 +850,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5628018141983903106, guid: 47d480f086dfb87419cc085a5e4b4552, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5628018141983903106, guid: 47d480f086dfb87419cc085a5e4b4552, type: 3}
       propertyPath: m_LocalRotation.w
@@ -882,16 +880,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5628018141983903107, guid: 47d480f086dfb87419cc085a5e4b4552, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5628018141983903107, guid: 47d480f086dfb87419cc085a5e4b4552, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5628018141983903119, guid: 47d480f086dfb87419cc085a5e4b4552, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47d480f086dfb87419cc085a5e4b4552, type: 3}
 --- !u!1 &702262372
 GameObject:
@@ -3115,10 +3104,10 @@ MonoBehaviour:
   gameTime: 150
   scoreCounter: {fileID: 1248741380}
   countdownTimer: {fileID: 1039297471}
-  finalScore: {fileID: 2111451252}
+  finalScore: {fileID: 0}
   introMenu: {fileID: 1424589093}
   inGameMenu: {fileID: 2089992980}
-  pauseMenu: {fileID: 1443895703}
+  pauseMenu: {fileID: 2089992980}
   victoryMenu: {fileID: 222647416}
   defeatMenu: {fileID: 1103371975}
   hintMenu: {fileID: 1630320}
