@@ -31,6 +31,7 @@ public class CameraController : MonoBehaviour
     void Start()
     {
             GraphicsSettings.renderPipelineAsset = renderer2D;
+            QualitySettings.SetQualityLevel(3,true);
             Debug.Log("renderer changed to 2d");
     }
 
